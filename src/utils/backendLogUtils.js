@@ -1,4 +1,4 @@
-const pluginName = hexToAnsi('#49c3ff') + "[Change Summary] " + '\x1b[0m'
+const pluginName = hexToAnsi('#00a8ff') + "[Change Summary] " + '\x1b[0m'
 function hexToAnsi(hex) {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);

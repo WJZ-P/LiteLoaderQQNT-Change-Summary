@@ -1,7 +1,7 @@
-// const {Config} = require("../Config.js")
+ const {Config} = require("../Config.js")
 const {pluginLog} = require("./backendLogUtils.js");
 
-// const config = Config.config
+const config = Config.config
 
 
 /**
@@ -38,14 +38,23 @@ async function ipcMsgModify(args) {
         //说明消息内容是文字类
         if (item.elementType === 1) {
             //修改解密消息
-            //item.textElement.content = messageEncryptor(item.textElement.content)
+            //item.textElement.summary='嘻嘻哈哈'   //这个修改没有用
         }
 
         //说明消息内容是图片类，则修改图片外显
         else if (item.elementType === 2) {
-            item.picElement.summary=''
+            pluginLog('尝试修改图片外显')
+
+            if (item.picElement.picSubType === 1) item.picElement.summary = config.memeOutsideText
+            else if (item.picElement.picSubType === 0) item.picElement.summary = config.picOutsideText
+
+            // pluginLog('修改后的,msgElements为')
+            // for (let item of args[3][1][1].msgElements) {
+            //     console.log(item)
+            // }
         }
     }
+
     return args
 }
 

@@ -13,15 +13,21 @@ const config = Config.config
 module.exports.onBrowserWindowCreated = window => {
     // window 为 Electron 的 BrowserWindow 实例
     window.webContents.on("did-stop-loading", async () => {
-        if (window.webContents.getURL().indexOf("#/main/message") === -1 ||
+        if (window.webContents.getURL().indexOf("#/main/message") === -1 &&
             window.webContents.getURL().indexOf("#/chat") === -1
-        ) return;
+        ) {
+            // pluginLog('当前窗口ID为' + window.id)
+            //pluginLog(window.webContents.getURL())
+            // pluginLog(window.webContents.getURL().indexOf("#/main/message"))
+            return;
+        }
+        pluginLog('聊天窗口校验通过！当前是聊天窗口')
 
         try {
             //window 为 Electron 的 BrowserWindow 实例
-            pluginLog('启动！')
+            //pluginLog('启动！')
             await onload()
-            pluginLog("main.js onLoad注入成功")
+            //pluginLog("main.js onLoad注入成功")
 
             //替换掉官方的ipc监听器
             window.webContents._events["-ipc-message"] = ipcModifyer(window.webContents._events["-ipc-message"])
