@@ -1,6 +1,6 @@
 {
-    "memeOutsideText": "测试",
-    "picOutsideText": "测试",
+    "memeOutsideText": "",
+    "picOutsideText": "",
     "pluginPath": "E:\\LiteloaderQQNT\\plugins\\Change-Summary",
     "configPath": "E:\\LiteloaderQQNT\\plugins\\Change-Summary\\config.json"
 }

@@ -6,70 +6,39 @@
             <div class="list">
                 <div class="vertical-list-item top-box">
                     <div class="left-part">
-                        <h2>配置密钥</h2>
+                        <h2>配置图片外显文本</h2>
                         <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">密钥用于加密和解密信息，必须双方密钥一致才可以正常通信。</span>
+                            <span class="secondary-text">修改后，原来显示的"[图片]"将被替换为你写入的文本。</span>
                         </div>
                     </div>
                     <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-                           type="text" id="ec-key-input" placeholder="默认20040821">
+                           type="text" id="cs-input-pic" placeholder="请输入文本">
                 </div>
 
                 <hr class="horizontal-dividing-line"/>
-                <div class="vertical-list-item">
+
+                <div class="vertical-list-item top-box">
                     <div class="left-part">
-                        <h2>选择语种</h2>
+                        <h2>配置表情包外显文本</h2>
                         <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">语种与加密内容无关，仅作为表面上的文本混淆视听。有可爱的喵喵语、邦布语等哦！</span>
+                            <span class="secondary-text">修改后，原来显示的"[动画表情]"将被替换为你写入的文本。</span>
                         </div>
                     </div>
-                    <div>
-                        <label>
-                            <select id="ec-style-selector">
-                                <option value="Neko">喵喵语</option>
-                                <option value="Bangboo">邦布语</option>
-                                <option value="Hilichurl">丘丘语</option>
-                                <option value="Birdie">小鸟语</option>
-                                <option value="Doggo">小狗语</option>
-                                <option value="Nier">尼尔语</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-
-                <hr class="horizontal-dividing-line"/>
-                <div class="vertical-list-item" style="display: flex; flex-direction: column">
-                    <h1>使用方法：打开聊天窗口，点击输入栏上方右侧的加密图标即可切换是否加密。</h1>
-                    <h2>目前全局共用一个密钥。</h2>
-                </div>
-                <hr class="horizontal-dividing-line"/>
-                <div class="vertical-list-item">
-                    <h1>加密图片的缓存在插件目录/decryptedImgs内，每次退出QQ会自动删除缓存。</h1>
-                </div>
-                <hr class="horizontal-dividing-line"/>
-                <div class="vertical-list-item">
-                    <h1>加密文件下载地址在插件目录/decryptedFiles内。</h1>
-                </div>
-                <hr class="horizontal-dividing-line"/>
-                <div class="vertical-list-item" style="display: flex; flex-direction: column">
-                    <h1>按Ctrl+E可快捷切换EC状态</h1>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-meme" placeholder="请输入文本">
                 </div>
             </div>
         </div>
     </section>
 
     <section class="path">
-        <h1>样式配置</h1>
+        <h1>附加内容</h1>
         <div class="wrap">
             <div class="list">
                 <div class="vertical-list-item">
                     <div>
-                        <h2>EC消息主题色</h2>
-                        <span class="secondary-text">修改EC消息被解密渲染时的边框颜色和解密tag颜色</span>
-                    </div>
-                    <div>
-                        <input type="color" value="#66ccff" id="ec-color-selector"
-                               class="q-button q-button--small q-button--secondary color-picker"/>
+                        <h2>作者的话</h2>
+                        <span class="secondary-text">项目地址https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary，喜欢请点小星星！</span>
                     </div>
                 </div>
 
@@ -79,20 +48,6 @@
     </section>
 
     <style>
-        #ec-style-selector {
-            color: gray;
-            width: 180px;
-            font-size: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: var(--background-color-05); /*跟随主题色*/
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            outline: none;
-            padding: 5px;
-
-        }
-
         #ec-style-selector option {
             background-color: var(--background-color-05); /* 修改选项的背景色 */
             opacity: 0.8;
@@ -106,29 +61,9 @@
             color: #fff; /* 改变文字颜色 */
         }
 
-        #ec-style-selector:focus {
-            border-color: #007BFF;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
         .custom-input {
             color: gray;
             /*background-color: #abbbbb; !* 暗色背景 *!*/
-        }
-
-        /*控制颜色选择器样式*/
-        .color-picker {
-            -webkit-appearance: none;
-            appearance: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            outline: none;
-            transition: transform 0.2s;
-        }
-
-        .color-picker:hover {
-            transform: scale(1.1);
         }
 
         .q-input__inner {
