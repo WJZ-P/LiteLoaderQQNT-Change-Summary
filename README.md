@@ -1,4 +1,4 @@
-## 实现接近原生手机QQ的+1功能
+## 实现图片+表情包的外显缩略文本修改功能
 
 <!-- PROJECT SHIELDS -->
 
@@ -18,28 +18,28 @@
 <!-- PROJECT LOGO -->
 
 <p align="center">
-  <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/">
-    <img src="src/assests/plus_one.svg" alt="Logo" width="150" height="150" style="color: #66ccff;margin: 0">
+  <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary">
+    <img src="src/assests/icon.svg" alt="Logo" width="150" height="150" style="color: #66ccff;margin: 0">
   </a>
-  <h1 align="center">Echo Message</h1>
+  <h1 align="center">Change Summary</h1>
   <p align="center">
-    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message">查看Demo</a>
+    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary">查看Demo</a>
     ·
-    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/issues">报告Bug</a>
+    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/issues">报告Bug</a>
     ·
-    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/issues">提出新特性</a>
+    <a href="https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/issues">提出新特性</a>
   </p>
 </p>
 
 <p align="center">
-  <a href="https://www.bilibili.com/video/BV18Y4y1V7n5">
-    <img src="src/assests/markdown/re.png" alt="Reeeee">
+  <a href="https://www.bilibili.com/video/BV1Zs411z79y">
+    <img src="src/assests/markdown/尘降.jpg" alt="尘降">
   </a>
 </p>
-<h2 align="center">"喜欢如
-落幕后放映机繁忙空转
-辗转反侧多少夜
-才能够将是非明辨"
+<h2 align="center">"若你能命中我
+自宇宙的中央
+镜片里能不能
+留下我的模样"
 </h2>
 
 ## 目录
@@ -82,11 +82,11 @@
 
 # 使用方法
 
-## 1.复读你都不会？点+1就行，跟手机QQ操作一样
+## 进入设置界面，输入你想要显示的外显文本即可
 
 <p align="center">
   <a>
-    <img src="src/assests/markdown/repeat.png" alt="聊天界面" style="width: 200px">
+    <img src="src/assests/markdown/instuction.png" alt="聊天界面" style="width: 600px">
   </a>
 </p>
 
@@ -94,7 +94,7 @@
 ## 版权说明
 
 该项目签署了EPL-2.0 license
-授权许可，详情请参阅 [LICENSE](https://github.com/WJZ-P/LiteLoaderQQNT-Encrypt-Chat/blob/main/LICENSE)
+授权许可，详情请参阅 [LICENSE](https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/blob/main/LICENSE)
 
 ## 鸣谢
 
@@ -105,30 +105,30 @@
 
 ## ⭐ Star 历史
 
-[![Stargazers over time](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?variant=adaptive)](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Echo-Message)
+[![Stargazers over time](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?variant=adaptive)](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Change-Summary)
 <!-- links -->
 
-[your-project-path]:WJZ-P/LiteLoaderQQNT-Echo-Message
+[your-project-path]:WJZ-P/LiteLoaderQQNT-Change-Summary
 
-[contributors-shield]: https://img.shields.io/github/contributors/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
-[contributors-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/graphs/contributors
+[contributors-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
-[forks-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/network/members
+[forks-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
-[stars-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/stargazers
+[stars-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
-[issues-url]: https://img.shields.io/github/issues/WJZ-P/LiteLoaderQQNT-Echo-Message.svg
+[issues-url]: https://img.shields.io/github/issues/WJZ-P/LiteLoaderQQNT-Change-Summary.svg
 
-[license-shield]: https://img.shields.io/github/license/WJZ-P/LiteLoaderQQNT-Echo-Message.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
-[license-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Echo-Message/blob/main/LICENSE
+[license-url]: https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary/blob/main/LICENSE
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 
