@@ -1,10 +1,12 @@
 {
   "manifest_version": 4,
   "type": "extension",
-  "name": "Change Summary",
+  "name": "修改图片概要",
   "slug": "change_summary",
   "description": "修改图片/表情包外显消息(未进入群聊时在外部看见的简略文本)（＾∀＾）",
   "version": "1.0.0",
+  "icon": "./src/assests/icon.svg",
+  "thumb": "./src/assests/icon.svg",
   "authors": [
     {
       "name": "WJZ_P",

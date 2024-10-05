@@ -17,11 +17,12 @@ class Config {
             pluginLog('插件路径为' + this.config.pluginPath)
             fs.writeFileSync(this.config.configPath, JSON.stringify(this.config, null, 4), 'utf-8')
             pluginLog('配置文件创建成功')
+        } else {
+            Object.assign(this.config, JSON.parse(fs.readFileSync(this.config.configPath, 'utf-8')))
+            pluginLog('当前的配置文件为')
+            console.log(this.config)
+            pluginLog('配置初始化完毕')
         }
-        Object.assign(this.config, JSON.parse(fs.readFileSync(this.config.configPath, 'utf-8')))
-        pluginLog('当前的配置文件为')
-        console.log(this.config)
-        pluginLog('配置初始化完毕')
     }
 
     static async getConfig() {

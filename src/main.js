@@ -1,7 +1,9 @@
+const {ipcMain} = require("electron");
 const {pluginLog} = require("./utils/backendLogUtils.js");
 const {ipcModifyer} = require("./utils/ipcUtils.js");
 const path = require("path");
 const {Config} = require("./Config.js");
+const fs = require("fs");
 // 运行在 Electron 主进程 下的插件入口
 // 创建窗口时触发
 
@@ -21,7 +23,11 @@ module.exports.onBrowserWindowCreated = window => {
             // pluginLog(window.webContents.getURL().indexOf("#/main/message"))
             return;
         }
+
         pluginLog('聊天窗口校验通过！当前是聊天窗口')
+        await Config.initConfig(pluginPath, configPath)//加载配置
+        pluginLog('配置加载完成，当前配置为')
+        console.log(config)
 
         try {
             //window 为 Electron 的 BrowserWindow 实例
@@ -38,6 +44,16 @@ module.exports.onBrowserWindowCreated = window => {
         }
     })
 }
+
+ipcMain.handle("LiteLoader.change_summary.getMenuHTML", () => fs.readFileSync(path.join(
+    LiteLoader.plugins.change_summary.path.plugin, 'src/pluginMenu.html'), 'utf-8'))
+
+ipcMain.handle("LiteLoader.change_summary.getConfig", () => Config.getConfig())
+    ipcMain.handle("LiteLoader.change_summary.setConfig", (event, newConfig) => {
+        pluginLog('主进程收到setConfig消息，更新设置。')
+        //更新配置，并且返回新的配置
+        return Config.setConfig(newConfig)
+    })
 
 async function onload() {
 }
