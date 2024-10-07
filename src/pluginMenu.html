@@ -32,6 +32,65 @@
     </section>
 
     <section class="path">
+        <h1>附加配置</h1>
+        <div class="wrap">
+            <div class="list">
+                <div class="vertical-list-item top-box">
+                    <div class="left-part">
+                        <h2>图片外显接入随机文本API</h2>
+                        <div style="display: flex; flex-direction: column">
+                            <span class="secondary-text">开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。</span>
+                        </div>
+                    </div>
+                    <div id="cs-switch-pic" class="q-switch">
+                        <span class="q-switch__handle"></span>
+                    </div>
+                </div>
+
+                <hr class="horizontal-dividing-line"/>
+
+                <div class="vertical-list-item top-box">
+                    <div class="left-part">
+                        <h2>表情包外显文本接入随机文本API</h2>
+                        <div style="display: flex; flex-direction: column">
+                            <span class="secondary-text">开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。</span>
+                        </div>
+                    </div>
+                    <div id="cs-switch-meme" class="q-switch">
+                        <span class="q-switch__handle"></span>
+                    </div>
+                </div>
+
+                <hr class="horizontal-dividing-line"/>
+
+                <div class="vertical-list-item top-box">
+                    <div class="left-part">
+                        <h2>随机文本API</h2>
+                        <div style="display: flex; flex-direction: column">
+                            <span class="secondary-text">自定义随机文本API</span>
+                        </div>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-rmapi" placeholder="请输入url" disabled="true">
+                </div>
+
+                <hr class="horizontal-dividing-line"/>
+
+                <div class="vertical-list-item top-box">
+                    <div class="left-part">
+                        <h2>随机文本API键值</h2>
+                        <div style="display: flex; flex-direction: column">
+                            <span class="secondary-text">自定义随机文本API获取到的文本对应键值</span>
+                        </div>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled="true">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="path">
         <h1>附加内容</h1>
         <div class="wrap">
             <div class="list">
