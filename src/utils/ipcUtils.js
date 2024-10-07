@@ -14,23 +14,31 @@ function ipcModifyer(ipcProxy, window) {
     return new Proxy(ipcProxy, {
         async apply(target, thisArg, args) {
             let modifiedArgs = args;
-            try {//thisArg是WebContent对象
-                //设置ipc通道名
-                const ipcName = args?.[3]?.[1]?.[0]
-                const eventName = args?.[3]?.[0]?.eventName
+            try { // thisArg是WebContent对象
+                // 设置ipc通道名
+                const ipcName = args?.[3]?.[1]?.[0];
+                const eventName = args?.[3]?.[0]?.eventName;
 
-                if (ipcName === 'nodeIKernelMsgService/sendMsg') modifiedArgs = await ipcMsgModify(args, window);
+                if (ipcName === 'nodeIKernelMsgService/sendMsg')
+                    modifiedArgs = await ipcMsgModify(args, window);
 
-                return target.apply(thisArg, modifiedArgs)
+                return await target.apply(thisArg, modifiedArgs);
             } catch (err) {
                 console.log(err);
-                target.apply(thisArg, args)
+                return await target.apply(thisArg, args);
             }
         }
-    })
+    });
 }
 
+
 async function ipcMsgModify(args) {
+    // 获取随机文本辅助函数
+    const getRandomText = async() => {
+        const response = await fetch(config.randomTextApi);
+        return await response.json();
+    }
+
     if (!args?.[3]?.[1]?.[0] || args[3][1][0] !== 'nodeIKernelMsgService/sendMsg') return args;
 
     //修改原始消息
@@ -45,8 +53,18 @@ async function ipcMsgModify(args) {
         else if (item.elementType === 2) {
             pluginLog('尝试修改图片外显')
 
-            if (item.picElement.picSubType === 1) item.picElement.summary = config.memeOutsideText
-            else if (item.picElement.picSubType === 0) item.picElement.summary = config.picOutsideText
+            try {
+                const subtype = item.picElement.picSubType;
+                const useRandom = subtype === 1 ? config.isMemeOTuseRandom : config.isPicOTuseRandom;
+                const outsideText = subtype === 1 ? config.memeOutsideText : config.picOutsideText;
+
+                if(useRandom)
+                    item.picElement.summary = (await getRandomText())[config.randomTextApiKey];
+                else item.picElement.summary = outsideText;
+            } catch(e) {
+                console.error(`获取随机文本或设置外显文字时发生错误: ${e}`);
+            }
+
 
             // pluginLog('修改后的,msgElements为')
             // for (let item of args[3][1][1].msgElements) {

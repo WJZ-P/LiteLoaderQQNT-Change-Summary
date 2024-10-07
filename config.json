@@ -1,6 +1,10 @@
 {
-    "memeOutsideText": "",
+    "memeOutsideText": "呐 我喜欢你",
     "picOutsideText": "",
-    "pluginPath": "E:\\LiteloaderQQNT\\plugins\\Change-Summary",
-    "configPath": "E:\\LiteloaderQQNT\\plugins\\Change-Summary\\config.json"
+    "isPicOTuseRandom": false,
+    "isMemeOTuseRandom": true,
+    "randomTextApi": "https://v1.hitokoto.cn/?charset=utf-8&encode=json",
+    "randomTextApiKey": "hitokoto",
+    "pluginPath": "C:\\Program Files\\Tencent\\QQNT\\versions\\9.9.15-28418\\resources\\app\\node_modules\\LiteLoaderQQNT\\plugins\\LiteLoaderQQNT-Change-Summary",
+    "configPath": "C:\\Program Files\\Tencent\\QQNT\\versions\\9.9.15-28418\\resources\\app\\node_modules\\LiteLoaderQQNT\\plugins\\LiteLoaderQQNT-Change-Summary\\config.json"
 }
