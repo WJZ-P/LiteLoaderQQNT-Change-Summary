@@ -1,4 +1,4 @@
- const {Config} = require("../Config.js")
+const {Config} = require("../Config.js")
 const {pluginLog} = require("./backendLogUtils.js");
 
 const config = Config.config
@@ -34,7 +34,7 @@ function ipcModifyer(ipcProxy, window) {
 
 async function ipcMsgModify(args) {
     // 获取随机文本辅助函数
-    const getRandomText = async() => {
+    const getRandomText = async () => {
         const response = await fetch(config.randomTextApi);
         return await response.json();
     }
@@ -52,16 +52,15 @@ async function ipcMsgModify(args) {
         //说明消息内容是图片类，则修改图片外显
         else if (item.elementType === 2) {
             pluginLog('尝试修改图片外显')
-
             try {
-                const subtype = item.picElement.picSubType;
+                const subtype = item.picElement.picSubType;//subType 1是表情包，0是图片
                 const useRandom = subtype === 1 ? config.isMemeOTuseRandom : config.isPicOTuseRandom;
                 const outsideText = subtype === 1 ? config.memeOutsideText : config.picOutsideText;
 
-                if(useRandom)
+                if (useRandom)
                     item.picElement.summary = (await getRandomText())[config.randomTextApiKey];
                 else item.picElement.summary = outsideText;
-            } catch(e) {
+            } catch (e) {
                 console.error(`获取随机文本或设置外显文字时发生错误: ${e}`);
             }
 
@@ -70,6 +69,20 @@ async function ipcMsgModify(args) {
             // for (let item of args[3][1][1].msgElements) {
             //     console.log(item)
             // }
+        } else if (item.elementType === 11) {//11是marketFaceElement，是商城表情，用表情包的外显或者随机外显吧
+            try {
+                pluginLog('尝试修改商城表情外显')
+
+                const useRandom = config.isMemeOTuseRandom
+                const outsideText = config.memeOutsideText
+
+                if (useRandom)
+                    item.marketFaceElement.faceName = (await getRandomText())[config.randomTextApiKey];
+                else item.marketFaceElement.faceName = outsideText;
+
+            } catch (e) {
+                pluginLog(`获取随机文本或设置外显文字时发生错误: ${e}`);
+            }
         }
     }
 
