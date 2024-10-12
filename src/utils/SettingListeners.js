@@ -9,25 +9,35 @@ export class SettingListeners {
 
     async initListener() {
         let picValue, memeValue, isPicOTuseRandom, isMemeOTuseRandom, rmApiValue, rmApiKeyValue;
-        isPicOTuseRandom = (await csAPI.getConfig()).isPicOTuseRandom;
-        isMemeOTuseRandom = (await csAPI.getConfig()).isMemeOTuseRandom;
+
+        const config = await csAPI.getConfig()
+        isPicOTuseRandom = config.isPicOTuseRandom;
+        isMemeOTuseRandom = config.isMemeOTuseRandom;
 
         const picInputEl = this.document.querySelector('#cs-input-pic')
         const memeInputEl = this.document.querySelector('#cs-input-meme')
-        picInputEl.value = (await csAPI.getConfig()).picOutsideText
-        memeInputEl.value = (await csAPI.getConfig()).memeOutsideText
+        picInputEl.value = config.picOutsideText
+        memeInputEl.value = config.memeOutsideText
 
         // 随机外显开关部分
         const picRandomSw = this.document.querySelector('#cs-switch-pic');
         const memeRandomSw = this.document.querySelector('#cs-switch-meme');
-        picRandomSw.classList.toggle('is-active', (await csAPI.getConfig()).isPicOTuseRandom);
-        memeRandomSw.classList.toggle('is-active', (await csAPI.getConfig()).isMemeOTuseRandom);
+        picRandomSw.classList.toggle('is-active', config.isPicOTuseRandom);
+        memeRandomSw.classList.toggle('is-active', config.isMemeOTuseRandom);
 
         // 自定义随机文本API部分
         const rmApiInputEle = this.document.querySelector('#cs-input-rmapi');
         const rmApiKeyInputEle = this.document.querySelector('#cs-input-rmapi-key');
-        rmApiInputEle.value = (await csAPI.getConfig()).randomTextApi;
-        rmApiKeyInputEle.value = (await csAPI.getConfig()).randomTextApiKey;
+        rmApiInputEle.value = config.randomTextApi;
+        rmApiKeyInputEle.value = config.randomTextApiKey;
+        // 随机外显API输入框调整，如果开启随机，那么输入框应该是可输入的
+
+        if (config.isPicOTuseRandom) {
+            rmApiInputEle.disabled = false
+        }
+        if (config.isMemeOTuseRandom) {
+            rmApiInputEle.disabled = false
+        }
 
         //设置监听器
         picInputEl.addEventListener('change', async event => {
@@ -46,16 +56,16 @@ export class SettingListeners {
             pluginLog('修改表情包外显为' + memeValue)
         })
 
-        picRandomSw.addEventListener('click', async function(event) {
+        picRandomSw.addEventListener('click', async function (event) {
             isPicOTuseRandom = !isPicOTuseRandom;
             this.classList.toggle('is-active', isPicOTuseRandom);
 
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
-            if(isPicOTuseRandom) {
+            if (isPicOTuseRandom) {
                 picInputEl.disabled = true;
                 rmApiInputEle.disabled = false;
                 rmApiKeyInputEle.disabled = false;
-            } else if(isMemeOTuseRandom) {
+            } else if (isMemeOTuseRandom) {
                 picInputEl.disabled = false; // 如果表情包还在用随机外显，则不禁用自定义外显API输入框
             } else {
                 picInputEl.disabled = false;
@@ -68,16 +78,16 @@ export class SettingListeners {
             pluginLog(`修改图片外显随机开关为 ${isPicOTuseRandom}`)
         })
 
-        memeRandomSw.addEventListener('click', async function(event) {
+        memeRandomSw.addEventListener('click', async function (event) {
             isMemeOTuseRandom = !isMemeOTuseRandom;
             this.classList.toggle('is-active', isMemeOTuseRandom);
 
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
-            if(isMemeOTuseRandom) {
+            if (isMemeOTuseRandom) {
                 memeInputEl.disabled = true;
                 rmApiInputEle.disabled = false;
                 rmApiKeyInputEle.disabled = false;
-            } else if(isPicOTuseRandom) {
+            } else if (isPicOTuseRandom) {
                 memeInputEl.disabled = false; // 如果图片还在用随机外显，则不禁用自定义外显API输入框
             } else {
                 memeInputEl.disabled = false;
