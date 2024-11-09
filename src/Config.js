@@ -1,6 +1,5 @@
 const fs = require('fs');
 const {pluginLog} = require("./utils/backendLogUtils.js")
-const path = require('path');
 
 class Config {
     static config = {

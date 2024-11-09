@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+<meta charset="UTF-8" xmlns="" xmlns="">
 <change-summary-plugin-menu>
 	<setting-section data-title="主要配置">
 		<setting-panel>
@@ -29,7 +29,7 @@
 			<setting-list data-direction="column">
 				<setting-item data-direction="row">
 						<div>
-							<setting-text>图片外显接入随机文本API (优先级高于自定义文本)</setting-text>
+							<setting-text>图片外显接入随机文本API&nbsp;&nbsp;&nbsp;&nbsp;(优先于自定义文本)</setting-text>
 							<setting-text data-type="secondary">开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。</setting-text>
 						</div>
 					<setting-switch id="cs-switch-pic"></setting-switch>
@@ -38,7 +38,7 @@
 
 				<setting-item data-direction="row">
 					<div>
-						<setting-text>表情包外显接入随机文本API (优先级高于自定义文本)</setting-text>
+						<setting-text>表情包外显接入随机文本API (优先于自定义文本)</setting-text>
 						<setting-text data-type="secondary">开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。</setting-text>
 					</div>
 					<setting-switch id="cs-switch-meme"></setting-switch>
@@ -85,6 +85,12 @@
 					</div>
 					<setting-button data-type="primary" id="cs-check-update">检查更新</setting-button>
 				</setting-item>
+				<setting-item data-direction="row">
+					<div>
+						<setting-text id="cs-version">注意，当前版本修改了UI，旧QQ(如26909版本)可能不适配，有问题可降至v1.1.2版本</setting-text>
+						<setting-text data-type="secondary">一般在同时启用“背景插件”时UI会部分显示错误</setting-text>
+					</div>
+				</setting-item>
 			
 			</setting-list>
 		</setting-panel>
@@ -103,9 +109,5 @@
 			font-size: 14px;
 		}
 
-		/* 通用 */
-		.config_view {
-			margin: 20px;
-		}
 	</style>
 </change-summary-plugin-menu>
