@@ -22,8 +22,8 @@ export class SettingListeners {
         // 随机外显开关部分
         const picRandomSw = this.document.querySelector('#cs-switch-pic');
         const memeRandomSw = this.document.querySelector('#cs-switch-meme');
-        picRandomSw.classList.toggle('is-active', config.isPicOTuseRandom);
-        memeRandomSw.classList.toggle('is-active', config.isMemeOTuseRandom);
+        config.isPicOTuseRandom && picRandomSw.toggleAttribute('is-active');
+        config.isMemeOTuseRandom && memeRandomSw.toggleAttribute('is-active');
 
         // 自定义随机文本API部分
         const rmApiInputEle = this.document.querySelector('#cs-input-rmapi');
@@ -31,13 +31,8 @@ export class SettingListeners {
         rmApiInputEle.value = config.randomTextApi;
         rmApiKeyInputEle.value = config.randomTextApiKey;
         // 随机外显API输入框调整，如果开启随机，那么输入框应该是可输入的
-
-        if (config.isPicOTuseRandom) {
-            rmApiInputEle.disabled = false
-        }
-        if (config.isMemeOTuseRandom) {
-            rmApiInputEle.disabled = false
-        }
+        if(config.isPicOTuseRandom || config.isMemeOTuseRandom)
+            rmApiKeyInputEle.disabled = rmApiInputEle.disabled = false;
 
         //设置监听器
         picInputEl.addEventListener('change', async event => {
@@ -58,7 +53,7 @@ export class SettingListeners {
 
         picRandomSw.addEventListener('click', async function (event) {
             isPicOTuseRandom = !isPicOTuseRandom;
-            this.classList.toggle('is-active', isPicOTuseRandom);
+            this.toggleAttribute('is-active');
 
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
             if (isPicOTuseRandom) {
@@ -80,7 +75,7 @@ export class SettingListeners {
 
         memeRandomSw.addEventListener('click', async function (event) {
             isMemeOTuseRandom = !isMemeOTuseRandom;
-            this.classList.toggle('is-active', isMemeOTuseRandom);
+            this.toggleAttribute('is-active');
 
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
             if (isMemeOTuseRandom) {
@@ -101,7 +96,7 @@ export class SettingListeners {
         })
 
         rmApiInputEle.addEventListener('change', async event => {
-            rmApiValue = event.target.value
+            rmApiValue = event.target.value || csAPI.getConfig().randomTextApi
 
             // 发送设置密钥事件
             await csAPI.setConfig({randomTextApi: rmApiValue})
@@ -109,13 +104,46 @@ export class SettingListeners {
         })
 
         rmApiKeyInputEle.addEventListener('change', async event => {
-            rmApiKeyValue = event.target.value
+            rmApiKeyValue = event.target.value || csAPI.getConfig().randomTextApiKey
 
             // 发送设置密钥事件
             await csAPI.setConfig({randomTextApiKey: rmApiKeyValue})
             pluginLog(`修改随机文本API获取键值为 ${rmApiKeyValue}`)
         })
 
+        // 仓库按钮
+        this.document.querySelector('#cs-gh-btn')
+            .addEventListener('click', () => LiteLoader.api.openExternal(
+                'https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary'
+            ));
+
+        // 版本信息
+        this.document.querySelector('#cs-version')
+            .innerHTML = `当前版本 v${LiteLoader.plugins.change_summary.manifest.version}`;
+
+        // 检查更新
+        this.document.querySelector('#cs-check-update')
+            .addEventListener('click', async(e) => {
+                let that = e.target.parentNode;
+                const req = await fetch(
+                    'https://api.github.com/repos/WJZ-P/LiteLoaderQQNT-Change-Summary/releases/latest'
+                );
+                const res = await req.json();
+                const current = LiteLoader.plugins.change_summary.manifest.version.split('.');
+                const latest = res.tag_name.replace('v', '').split('.');
+                for(let i in current) {
+                    if(current[i] < latest[i]) {
+                        that.querySelector('#cs-version')
+                            .innerHTML = `当前版本 v${current.join('.')} 发现新版本 ${res.tag_name}`;
+                        that.querySelector('#cs-check-update')
+                            .innerHTML = '立即更新';
+                        that.querySelector('#cs-check-update')
+                            .addEventListener('click', () => LiteLoader.api.openExternal(res.html_url));
+                        break;
+                    } else that.querySelector('#cs-check-update')
+                            .innerHTML = '暂未发现';
+                }
+            });
     }
 
     onLoad() {

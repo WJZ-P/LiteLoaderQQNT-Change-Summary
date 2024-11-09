@@ -10,7 +10,9 @@ export const onSettingWindowCreated = async view => {
     try {
         //整个插件主菜单
         const parser = new DOMParser()
-        const settingHTML = parser.parseFromString(await window.change_summary.getMenuHTML(), "text/html").querySelector(".config-menu")
+        const settingHTML = parser
+            .parseFromString(await window.change_summary.getMenuHTML(), "text/html")
+            .querySelector("change-summary-plugin-menu")
 
         const myListener = new SettingListeners(settingHTML)
         myListener.onLoad()

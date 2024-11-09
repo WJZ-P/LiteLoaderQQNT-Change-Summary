@@ -8,7 +8,7 @@ class Config {
         picOutsideText: "",
         isPicOTuseRandom: false,
         isMemeOTuseRandom: false,
-        randomTextApi: "https://v1.hitokoto.cn/?charset=utf-8&encode=json", // 默认API为一言API
+        randomTextApi: "https://v1.hitokoto.cn/", // 默认API为一言API
         randomTextApiKey: "hitokoto" // API返回的文本部分键值名
     }
 
