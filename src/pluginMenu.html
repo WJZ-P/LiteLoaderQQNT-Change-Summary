@@ -1,248 +1,111 @@
 <meta charset="UTF-8">
-<div class="config-menu config_view">
-    <section class="path">
-        <h1>主要配置</h1>
-        <div class="wrap">
-            <div class="list">
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>配置图片外显文本</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">修改后，原来显示的"[图片]"将被替换为你写入的文本。</span>
-                        </div>
-                    </div>
-                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-                           type="text" id="cs-input-pic" placeholder="请输入文本">
-                </div>
+<change-summary-plugin-menu>
+	<setting-section data-title="主要配置">
+		<setting-panel>
+				<setting-list data-direction="column">
+					<setting-item data-direction="row">
+						<div>
+							<setting-text>自定义图片外显文本</setting-text>
+							<setting-text data-type="secondary">修改后，原来显示的"[图片]"将被替换为你填入的文本。</setting-text>
+						</div>
+						<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+							type="text" id="cs-input-pic" placeholder="请输入文本">
+					</setting-item>
 
-                <hr class="horizontal-dividing-line"/>
+					<setting-item data-direction="row">
+						<div>
+							<setting-text>自定义表情包外显文本</setting-text>
+							<setting-text data-type="secondary">修改后，原来显示的"[动画表情]"将被替换为你填入的文本。</setting-text>
+						</div>
+						<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+							type="text" id="cs-input-meme" placeholder="请输入文本">
+				</setting-item>
+			</setting-list>
+		</setting-panel>
+	</setting-section>
 
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>配置表情包外显文本</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">修改后，原来显示的"[动画表情]"将被替换为你写入的文本。</span>
-                        </div>
-                    </div>
-                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-                           type="text" id="cs-input-meme" placeholder="请输入文本">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="path">
-        <h1>附加配置</h1>
-        <div class="wrap">
-            <div class="list">
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>图片外显接入随机文本API</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。</span>
-                        </div>
-                    </div>
-                    <div id="cs-switch-pic" class="q-switch">
-                        <span class="q-switch__handle"></span>
-                    </div>
-                </div>
-
-                <hr class="horizontal-dividing-line"/>
-
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>表情包外显文本接入随机文本API</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。</span>
-                        </div>
-                    </div>
-                    <div id="cs-switch-meme" class="q-switch">
-                        <span class="q-switch__handle"></span>
-                    </div>
-                </div>
-
-                <hr class="horizontal-dividing-line"/>
-
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>随机文本API</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">自定义随机文本API</span>
-                        </div>
-                    </div>
-                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-                           type="text" id="cs-input-rmapi" placeholder="请输入url" disabled="true">
-                </div>
-
-                <hr class="horizontal-dividing-line"/>
-
-                <div class="vertical-list-item top-box">
-                    <div class="left-part">
-                        <h2>随机文本API键值</h2>
-                        <div style="display: flex; flex-direction: column">
-                            <span class="secondary-text">自定义随机文本API获取到的文本对应键值</span>
-                        </div>
-                    </div>
-                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-                           type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled="true">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="path">
-        <h1>附加内容</h1>
-        <div class="wrap">
-            <div class="list">
-                <div class="vertical-list-item">
-                    <div>
-                        <h2>作者的话</h2>
-                        <span class="secondary-text">项目地址https://github.com/WJZ-P/LiteLoaderQQNT-Change-Summary，喜欢请点小星星！</span>
-                    </div>
-                </div>
-
-                <hr class="horizontal-dividing-line"/>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        #ec-style-selector option {
-            background-color: var(--background-color-05); /* 修改选项的背景色 */
-            opacity: 0.8;
-            color: #333;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        #ec-style-selector option:hover {
-            background-color: #66ccff; /* 当鼠标悬停时的背景色 */
-            color: #fff; /* 改变文字颜色 */
-        }
-
-        .custom-input {
-            color: gray;
-            /*background-color: #abbbbb; !* 暗色背景 *!*/
-        }
-
-        .q-input__inner {
-            border-radius: 2px;
-            border: 1px solid #ccc;
-            padding: 4px;
-            font-size: 14px;
-        }
-
-        .left-part {
-            display: flex;
-            flex-direction: column;
-            margin-right: 10px;
-        }
-
-        /* 通用 */
-        .config_view {
-            margin: 20px;
-        }
-
-        .config_view h1 {
-            color: var(--text_primary);
-            font-weight: var(--font-bold);
-            font-size: min(var(--font_size_3), 18px);
-            line-height: min(var(--line_height_3), 24px);
-            padding: 0px 16px;
-            margin-bottom: 8px;
-        }
-
-        .config_view .wrap {
-            /* Linux样式兼容：--fg_white */
-            background-color: var(--fill_light_primary, var(--fg_white));
-            border-radius: 8px;
-            font-size: min(var(--font_size_3), 18px);
-            line-height: min(var(--line_height_3), 24px);
-            margin-bottom: 20px;
-            overflow: hidden;
-            padding: 0px 16px;
-        }
-
-        .config_view .vertical-list-item {
-            margin: 10px 0px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .config_view .horizontal-dividing-line {
-            border: unset;
-            margin: unset;
-            height: 1px;
-            background-color: rgba(127, 127, 127, 0.15);
-        }
-
-        .config_view .secondary-text {
-            color: var(--text_secondary);
-            font-size: min(var(--font_size_2), 16px);
-            line-height: min(var(--line_height_2), 22px);
-            margin-top: 4px;
-        }
-
-        .config_view .wrap .title svg {
-            width: 1em;
-            height: 1em;
-            transform: rotate(-180deg);
-            transition-duration: 0.2s;
-            transition-timing-function: ease;
-            transition-delay: 0s;
-            transition-property: transform;
-        }
-
-        .config_view .modal-dialog header {
-            font-size: 12px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-        }
-
-        .config_view .modal-dialog main {
-            padding: 0px 16px;
-        }
-
-        .config_view .modal-dialog main p {
-            margin: 8px 0px;
-        }
-
-        .config_view .modal-dialog footer {
-            height: 30px;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-        }
+	<setting-section data-title="附加配置">
+		<setting-panel>
+			<setting-list data-direction="column">
+				<setting-item data-direction="row">
+						<div>
+							<setting-text>图片外显接入随机文本API (优先级高于自定义文本)</setting-text>
+							<setting-text data-type="secondary">开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。</setting-text>
+						</div>
+					<setting-switch id="cs-switch-pic"></setting-switch>
+				</setting-item>
 
 
-        /* 版本号 */
-        .config_view .versions .wrap {
-            display: flex;
-            justify-content: space-between;
-            padding: 16px 0px;
-        }
-
-        .config_view .versions .wrap > div {
-            flex: 1;
-            margin: 0px 10px;
-            border-radius: 8px;
-            text-align: center;
-        }
+				<setting-item data-direction="row">
+					<div>
+						<setting-text>表情包外显接入随机文本API (优先级高于自定义文本)</setting-text>
+						<setting-text data-type="secondary">开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。</setting-text>
+					</div>
+					<setting-switch id="cs-switch-meme"></setting-switch>
+				</setting-item>
 
 
-        @media (prefers-color-scheme: light) {
-            .text_color {
-                color: black;
-            }
-        }
+				<setting-item data-direction="row">
+					<div>
+						<setting-text>随机文本API</setting-text>
+						<setting-text data-type="secondary">自定义随机文本API</setting-text>
+					</div>
+					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+						type="text" id="cs-input-rmapi" placeholder="请输入url" disabled="true">
+				</setting-item>
 
-        @media (prefers-color-scheme: dark) {
-            .text_color {
-                color: white;
-            }
-        }
 
-    </style>
-</div>
+				<setting-item data-direction="row">
+					<div>
+						<setting-text>随机文本API键值</setting-text>
+						<setting-text data-type="secondary">从自定义随机文本API获取到的json对象中文本的对应键值</setting-text>
+					</div>
+					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+						type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled="true">
+				</setting-item>
+			</setting-list>
+		</setting-panel>
+	</setting-section>
+
+	<setting-section data-title="插件信息">
+		<setting-panel>
+			<setting-list data-direction="column">
+				<setting-item data-direction="row">
+					<div>
+						<setting-text>作者的话</setting-text>
+						<setting-text data-type="secondary">GitHub仓库 WJZ-P/LiteLoaderQQNT-Change-Summary，喜欢请点小星星！</setting-text>
+					</div>
+					<setting-button data-type="secondary" id="cs-gh-btn">让我康康</setting-button>
+				</setting-item>
+
+				<setting-item data-direction="row">
+					<div>
+						<setting-text id="cs-version"></setting-text>
+						<setting-text data-type="secondary">烟花易逝, 人情长存</setting-text>
+					</div>
+					<setting-button data-type="primary" id="cs-check-update">检查更新</setting-button>
+				</setting-item>
+			
+			</setting-list>
+		</setting-panel>
+	</setting-section>
+
+	<style>
+		.custom-input {
+			color: #b9b6b6;
+			/*background-color: #abbbbb; !* 暗色背景 *!*/
+		}
+
+		.q-input__inner {
+			border-radius: 2px;
+			/*border: 1px solid #ccc;*/
+			padding: 4px;
+			font-size: 14px;
+		}
+
+		/* 通用 */
+		.config_view {
+			margin: 20px;
+		}
+	</style>
+</change-summary-plugin-menu>
