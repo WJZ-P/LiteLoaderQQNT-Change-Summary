@@ -1,4 +1,4 @@
-<meta charset="UTF-8" xmlns="" xmlns="">
+<meta charset="utf-8">
 <change-summary-plugin-menu>
 	<setting-section data-title="主要配置">
 		<setting-panel>
@@ -51,7 +51,7 @@
 						<setting-text data-type="secondary">自定义随机文本API</setting-text>
 					</div>
 					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="text" id="cs-input-rmapi" placeholder="请输入url" disabled="true">
+						type="text" id="cs-input-rmapi" placeholder="请输入url" disabled>
 				</setting-item>
 
 
@@ -61,7 +61,7 @@
 						<setting-text data-type="secondary">从自定义随机文本API获取到的json对象中文本的对应键值</setting-text>
 					</div>
 					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled="true">
+						type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled>
 				</setting-item>
 			</setting-list>
 		</setting-panel>
@@ -85,29 +85,47 @@
 					</div>
 					<setting-button data-type="primary" id="cs-check-update">检查更新</setting-button>
 				</setting-item>
-				<setting-item data-direction="row">
+				<!-- 感觉已经没什么问题了 就先注释掉吧 -->
+				<!-- <setting-item data-direction="row">
 					<div>
 						<setting-text id="cs-version">注意，当前版本修改了UI，旧QQ(如26909版本)可能不适配，有问题可降至v1.1.2版本</setting-text>
 						<setting-text data-type="secondary">一般在同时启用“背景插件”时UI会部分显示错误</setting-text>
 					</div>
-				</setting-item>
+				</setting-item> -->
 			
 			</setting-list>
 		</setting-panel>
 	</setting-section>
 
 	<style>
-		.custom-input {
-			color: #757575;
-			border: #b9b6b6 solid 1px;
-			/*background-color: #abbbbb; !* 暗色背景 *!*/
-		}
 
-		.q-input__inner {
-			border-radius: 2px;
-			/*border: 1px solid #ccc;*/
+		.custom-input {
+			background-color: #cccc;
+			border-radius: 4px;
 			padding: 4px;
 			font-size: 14px;
+		}
+
+		.custom-input:hover,
+		.custom-input:focus {
+			outline: 1px solid #222; /* 用outline不会造成元素抖动 */
+		}
+
+		@media (prefers-color-scheme: dark) {
+			.custom-input {
+				color: #ccc;
+				background-color: #424242aa;
+				outline-color: #222;
+			}
+			.custom-input:hover,
+			.custom-input:focus {
+				outline-color: #ccc;
+			}
+		}
+
+		.custom-input[disabled] {
+			color: #757575;
+			outline: none;
 		}
 
 	</style>
