@@ -44,7 +44,7 @@
 
 ## 目录
 
-- [Echo Message](#projectname)
+- [Change Summary](#change-summary)
     - [目录](#目录)
         - [上手指南](#上手指南)
             - [开发前的配置要求](#开发前的配置要求)
@@ -111,8 +111,6 @@
 
 [![Stargazers over time](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?variant=adaptive)](https://starchart.cc/WJZ-P/LiteLoaderQQNT-Change-Summary)
 <!-- links -->
-
-[your-project-path]:WJZ-P/LiteLoaderQQNT-Change-Summary
 
 [contributors-shield]: https://img.shields.io/github/contributors/WJZ-P/LiteLoaderQQNT-Change-Summary.svg?style=flat-square
 
