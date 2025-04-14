@@ -51,7 +51,7 @@
 						<setting-text data-type="secondary">自定义随机文本API</setting-text>
 					</div>
 					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="text" id="cs-input-rmapi" placeholder="请输入url" disabled>
+						type="url" id="cs-input-rmapi" placeholder="请输入url" disabled>
 				</setting-item>
 
 
@@ -63,6 +63,16 @@
 					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
 						type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled>
 				</setting-item>
+
+				<setting-item data-direction="row">
+					<div>
+						<setting-text>随机文本API回退文本</setting-text>
+						<setting-text data-type="secondary">当请求随机文本API失败时，显示的文本</setting-text>
+					</div>
+					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+						type="text" id="cs-input-rmapi-fallback" placeholder="将使用自定义外显文本" disabled>
+				</setting-item>
+
 			</setting-list>
 		</setting-panel>
 	</setting-section>

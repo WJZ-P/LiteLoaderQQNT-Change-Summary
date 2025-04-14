@@ -9,6 +9,7 @@ class Config {
         isMemeOTuseRandom: false,
         randomTextApi: "https://v1.hitokoto.cn/", // 默认API为一言API
         randomTextApiKey: "hitokoto" // API返回的文本部分键值名
+        ,randomTextApiFailedFallbackText: "" // API请求失败时使用的备用文本 (为空将使用自定义文本)
     }
 
     static async initConfig(pluginPath, configPath) {

@@ -28,11 +28,13 @@ export class SettingListeners {
         // 自定义随机文本API部分
         const rmApiInputEle = this.document.querySelector('#cs-input-rmapi');
         const rmApiKeyInputEle = this.document.querySelector('#cs-input-rmapi-key');
+        const rmApiFallbackInput = this.document.querySelector('#cs-input-rmapi-fallback');
         rmApiInputEle.value = config.randomTextApi;
         rmApiKeyInputEle.value = config.randomTextApiKey;
+        rmApiFallbackInput.value = config.randomTextApiFailedFallbackText;
         // 随机外显API输入框调整，如果开启随机，那么输入框应该是可输入的
         if(config.isPicOTuseRandom || config.isMemeOTuseRandom)
-            rmApiKeyInputEle.disabled = rmApiInputEle.disabled = false;
+            rmApiKeyInputEle.disabled = rmApiInputEle.disabled = rmApiFallbackInput.disabled = false;
 
         //设置监听器
         picInputEl.addEventListener('change', async event => {
@@ -58,14 +60,12 @@ export class SettingListeners {
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
             if (isPicOTuseRandom) {
                 picInputEl.disabled = true;
-                rmApiInputEle.disabled = false;
-                rmApiKeyInputEle.disabled = false;
+                rmApiInputEle.disabled = rmApiKeyInputEle.disabled = rmApiFallbackInput.disabled = false;
             } else if (isMemeOTuseRandom) {
                 picInputEl.disabled = false; // 如果表情包还在用随机外显，则不禁用自定义外显API输入框
             } else {
                 picInputEl.disabled = false;
-                rmApiInputEle.disabled = true;
-                rmApiKeyInputEle.disabled = true;
+                rmApiInputEle.disabled = rmApiKeyInputEle.disabled = rmApiFallbackInput.disabled = true;
             }
 
             // 发送设置密钥事件
@@ -80,14 +80,12 @@ export class SettingListeners {
             // 如果使用随机外显，则禁用自定义外显输入框并启用随机外显API输入框
             if (isMemeOTuseRandom) {
                 memeInputEl.disabled = true;
-                rmApiInputEle.disabled = false;
-                rmApiKeyInputEle.disabled = false;
+                rmApiInputEle.disabled = rmApiKeyInputEle.disabled = rmApiFallbackInput.disabled = false;
             } else if (isPicOTuseRandom) {
                 memeInputEl.disabled = false; // 如果图片还在用随机外显，则不禁用自定义外显API输入框
             } else {
                 memeInputEl.disabled = false;
-                rmApiInputEle.disabled = true;
-                rmApiKeyInputEle.disabled = true;
+                rmApiInputEle.disabled = rmApiKeyInputEle.disabled = rmApiFallbackInput.disabled = true;
             }
 
             // 发送设置密钥事件
@@ -110,6 +108,12 @@ export class SettingListeners {
             await csAPI.setConfig({randomTextApiKey: rmApiKeyValue})
             pluginLog(`修改随机文本API获取键值为 ${rmApiKeyValue}`)
         })
+
+        rmApiFallbackInput.addEventListener('change', async event => {
+            const fallbackValue = event.target.value || "";
+            await csAPI.setConfig({randomTextApiFailedFallbackText: fallbackValue});
+            pluginLog(`修改随机文本API失败回退文本为 ${fallbackValue}`);
+        });
 
         // 仓库按钮
         this.document.querySelector('#cs-gh-btn')
