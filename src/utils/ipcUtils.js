@@ -36,7 +36,10 @@ async function ipcMsgModify(args) {
     // 获取随机文本辅助函数
     const getRandomText = async () => {
         const response = await fetch(config.randomTextApi);
-        return await response.json();
+        const json = await response.json();
+        if(!response.ok || !json.hasOwnProperty(config.randomTextApiKey))
+            return false;
+        return json[config.randomTextApiKey];
     }
 
     if (!args?.[3]?.[1]?.[0] || args[3][1][0] !== 'nodeIKernelMsgService/sendMsg') return args;
@@ -57,9 +60,10 @@ async function ipcMsgModify(args) {
                 const useRandom = subtype === 1 ? config.isMemeOTuseRandom : config.isPicOTuseRandom;
                 const outsideText = subtype === 1 ? config.memeOutsideText : config.picOutsideText;
 
+                let summary = outsideText;
                 if (useRandom)
-                    item.picElement.summary = (await getRandomText())[config.randomTextApiKey];
-                else item.picElement.summary = outsideText;
+                    summary = (await getRandomText()) || outsideText;
+                item.picElement.summary = summary;
             } catch (e) {
                 console.error(`获取随机文本或设置外显文字时发生错误: ${e}`);
             }
@@ -76,9 +80,10 @@ async function ipcMsgModify(args) {
                 const useRandom = config.isMemeOTuseRandom
                 const outsideText = config.memeOutsideText
 
+                let summary = outsideText;
                 if (useRandom)
-                    item.marketFaceElement.faceName = (await getRandomText())[config.randomTextApiKey];
-                else item.marketFaceElement.faceName = outsideText;
+                    summary = (await getRandomText()) || outsideText;
+                item.marketFaceElement.faceName = summary;
 
             } catch (e) {
                 pluginLog(`获取随机文本或设置外显文字时发生错误: ${e}`);
