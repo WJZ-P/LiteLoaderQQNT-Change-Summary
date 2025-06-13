@@ -44,7 +44,7 @@ async function ipcMsgModify(args, cmdName) {
 
     if (!cmdName || cmdName !== 'nodeIKernelMsgService/sendMsg') return args;
 
-    const payload = Array.isArray(args[3][1][1]) ? args[3][1][1] : args[3][1].payload;
+    const payload = Array.isArray(args[3][1]) ? args[3][1] : args[3][1].payload;
     // console.log('modmsg', payload);
     //修改原始消息
     for (const p of payload) {
