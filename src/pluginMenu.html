@@ -1,142 +1,152 @@
 <meta charset="utf-8">
 <change-summary-plugin-menu>
-	<setting-section data-title="主要配置">
-		<setting-panel>
-				<setting-list data-direction="column">
-					<setting-item data-direction="row">
-						<div>
-							<setting-text>自定义图片外显文本</setting-text>
-							<setting-text data-type="secondary">修改后，原来显示的"[图片]"将被替换为你填入的文本。</setting-text>
-						</div>
-						<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-							type="text" id="cs-input-pic" placeholder="请输入文本">
-					</setting-item>
+    <setting-section data-title="主要配置">
+        <setting-panel>
+            <setting-list data-direction="column">
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>自定义图片外显文本</setting-text>
+                        <setting-text data-type="secondary">修改后，原来显示的"[图片]"将被替换为你填入的文本。
+                        </setting-text>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-pic" placeholder="请输入文本">
+                </setting-item>
 
-					<setting-item data-direction="row">
-						<div>
-							<setting-text>自定义表情包外显文本</setting-text>
-							<setting-text data-type="secondary">修改后，原来显示的"[动画表情]"将被替换为你填入的文本。</setting-text>
-						</div>
-						<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-							type="text" id="cs-input-meme" placeholder="请输入文本">
-				</setting-item>
-			</setting-list>
-		</setting-panel>
-	</setting-section>
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>自定义表情包外显文本</setting-text>
+                        <setting-text data-type="secondary">修改后，原来显示的"[动画表情]"将被替换为你填入的文本。
+                        </setting-text>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-meme" placeholder="请输入文本">
+                </setting-item>
+            </setting-list>
+        </setting-panel>
+    </setting-section>
 
-	<setting-section data-title="附加配置">
-		<setting-panel>
-			<setting-list data-direction="column">
-				<setting-item data-direction="row">
-						<div>
-							<setting-text>图片外显接入随机文本API&nbsp;&nbsp;&nbsp;&nbsp;(优先于自定义文本)</setting-text>
-							<setting-text data-type="secondary">开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。</setting-text>
-						</div>
-					<setting-switch id="cs-switch-pic"></setting-switch>
-				</setting-item>
-
-
-				<setting-item data-direction="row">
-					<div>
-						<setting-text>表情包外显接入随机文本API (优先于自定义文本)</setting-text>
-						<setting-text data-type="secondary">开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。</setting-text>
-					</div>
-					<setting-switch id="cs-switch-meme"></setting-switch>
-				</setting-item>
+    <setting-section data-title="附加配置">
+        <setting-panel>
+            <setting-list data-direction="column">
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>图片外显接入随机文本API&nbsp;&nbsp;&nbsp;&nbsp;(优先于自定义文本)</setting-text>
+                        <setting-text data-type="secondary">
+                            开启后，原来显示的"[图片]"将被替换为从随机文本API获取的文本。
+                        </setting-text>
+                    </div>
+                    <setting-switch id="cs-switch-pic"></setting-switch>
+                </setting-item>
 
 
-				<setting-item data-direction="row">
-					<div>
-						<setting-text>随机文本API</setting-text>
-						<setting-text data-type="secondary">自定义随机文本API</setting-text>
-					</div>
-					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="url" id="cs-input-rmapi" placeholder="请输入url" disabled>
-				</setting-item>
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>表情包外显接入随机文本API (优先于自定义文本)</setting-text>
+                        <setting-text data-type="secondary">
+                            开启后，原来显示的"[动画表情]"将被替换为从随机文本API获取的文本。
+                        </setting-text>
+                    </div>
+                    <setting-switch id="cs-switch-meme"></setting-switch>
+                </setting-item>
 
 
-				<setting-item data-direction="row">
-					<div>
-						<setting-text>随机文本API键值</setting-text>
-						<setting-text data-type="secondary">从自定义随机文本API获取到的json对象中文本的对应键值</setting-text>
-					</div>
-					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled>
-				</setting-item>
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>随机文本API</setting-text>
+                        <setting-text data-type="secondary">自定义随机文本API</setting-text>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="url" id="cs-input-rmapi" placeholder="请输入url" disabled>
+                </setting-item>
 
-				<setting-item data-direction="row">
-					<div>
-						<setting-text>随机文本API回退文本</setting-text>
-						<setting-text data-type="secondary">当请求随机文本API失败时，显示的文本</setting-text>
-					</div>
-					<input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
-						type="text" id="cs-input-rmapi-fallback" placeholder="将使用自定义外显文本" disabled>
-				</setting-item>
 
-			</setting-list>
-		</setting-panel>
-	</setting-section>
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>随机文本API键值</setting-text>
+                        <setting-text data-type="secondary">从自定义随机文本API获取到的json对象中文本的对应键值
+                        </setting-text>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-rmapi-key" placeholder="请输入键值名" disabled>
+                </setting-item>
 
-	<setting-section data-title="插件信息">
-		<setting-panel>
-			<setting-list data-direction="column">
-				<setting-item data-direction="row">
-					<div>
-						<setting-text>作者的话</setting-text>
-						<setting-text data-type="secondary">GitHub仓库 WJZ-P/LiteLoaderQQNT-Change-Summary，喜欢请点小星星！</setting-text>
-					</div>
-					<setting-button data-type="secondary" id="cs-gh-btn">让我康康</setting-button>
-				</setting-item>
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>随机文本API回退文本</setting-text>
+                        <setting-text data-type="secondary">当请求随机文本API失败时，显示的文本</setting-text>
+                    </div>
+                    <input data-type="primary" class="q-input__inner q-input__inner--clearable custom-input"
+                           type="text" id="cs-input-rmapi-fallback" placeholder="将使用自定义外显文本" disabled>
+                </setting-item>
 
-				<setting-item data-direction="row">
-					<div>
-						<setting-text id="cs-version"></setting-text>
-						<setting-text data-type="secondary">烟花易逝, 人情长存</setting-text>
-					</div>
-					<setting-button data-type="primary" id="cs-check-update">检查更新</setting-button>
-				</setting-item>
-				<!-- 感觉已经没什么问题了 就先注释掉吧 -->
-				<!-- <setting-item data-direction="row">
-					<div>
-						<setting-text id="cs-version">注意，当前版本修改了UI，旧QQ(如26909版本)可能不适配，有问题可降至v1.1.2版本</setting-text>
-						<setting-text data-type="secondary">一般在同时启用“背景插件”时UI会部分显示错误</setting-text>
-					</div>
-				</setting-item> -->
-			
-			</setting-list>
-		</setting-panel>
-	</setting-section>
+            </setting-list>
+        </setting-panel>
+    </setting-section>
 
-	<style>
+    <setting-section data-title="插件信息">
+        <setting-panel>
+            <setting-list data-direction="column">
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text>作者的话</setting-text>
+                        <setting-text data-type="secondary">GitHub仓库
+                            WJZ-P/LiteLoaderQQNT-Change-Summary，喜欢请点小星星！
+                        </setting-text>
+                    </div>
+                    <setting-button data-type="secondary" id="cs-gh-btn">让我康康</setting-button>
+                </setting-item>
 
-		.custom-input {
-			background-color: #cccc;
-			border-radius: 4px;
-			padding: 4px;
-			font-size: 14px;
-		}
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text id="cs-version"></setting-text>
+                        <setting-text data-type="secondary">烟花易逝, 人情长存</setting-text>
+                    </div>
+                    <setting-button data-type="primary" id="cs-check-update">检查更新</setting-button>
+                </setting-item>
+                <!--				 这里注意，如果是旧版本，比如我是26909，推荐使用旧版。 -->
+                <setting-item data-direction="row">
+                    <div>
+                        <setting-text id="cs-version">无效说明</setting-text>
+                        <setting-text data-type="secondary">注意，目前的版本在较新的QQ版本上可用，如果在旧版QQ上出现无效情况，推荐使用1.3.0版本</setting-text>
+                    </div>
+                </setting-item>
 
-		.custom-input:hover,
-		.custom-input:focus {
-			outline: 1px solid #222; /* 用outline不会造成元素抖动 */
-		}
+            </setting-list>
+        </setting-panel>
+    </setting-section>
 
-		@media (prefers-color-scheme: dark) {
-			.custom-input {
-				color: #ccc;
-				background-color: #424242aa;
-				outline-color: #222;
-			}
-			.custom-input:hover,
-			.custom-input:focus {
-				outline-color: #ccc;
-			}
-		}
+    <style>
 
-		.custom-input[disabled] {
-			color: #757575;
-			outline: none;
-		}
+        .custom-input {
+            background-color: #cccc;
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 14px;
+        }
 
-	</style>
+        .custom-input:hover,
+        .custom-input:focus {
+            outline: 1px solid #222; /* 用outline不会造成元素抖动 */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .custom-input {
+                color: #ccc;
+                background-color: #424242aa;
+                outline-color: #222;
+            }
+
+            .custom-input:hover,
+            .custom-input:focus {
+                outline-color: #ccc;
+            }
+        }
+
+        .custom-input[disabled] {
+            color: #757575;
+            outline: none;
+        }
+
+    </style>
 </change-summary-plugin-menu>
