@@ -2,6 +2,7 @@ const { Config } = require("../Config.js")
 const { pluginLog } = require("./backendLogUtils.js");
 
 const config = Config.config
+const qqVer = parseInt(LiteLoader.versions.qqnt.split('-')[1]);
 
 
 /**
@@ -16,7 +17,7 @@ function ipcModifyer(ipcProxy, window) {
             let modifiedArgs = args;
             try { // thisArg是WebContent对象
                 // 设置ipc通道名
-                const ipcName = args?.[3]?.[1]?.[0] || args?.[3]?.[1]?.cmdName;
+                const ipcName = (qqVer >= 32000) ? args?.[3]?.[1]?.cmdName : args?.[3]?.[1]?.[0];
                 const eventName = args?.[3]?.[0]?.eventName;
 
                 if (ipcName === 'nodeIKernelMsgService/sendMsg')
@@ -31,20 +32,19 @@ function ipcModifyer(ipcProxy, window) {
     });
 }
 
+// 获取随机文本辅助函数
+const getRandomText = async () => {
+    const response = await fetch(config.randomTextApi);
+    const json = await response.json();
+    if (!response.ok || !json.hasOwnProperty(config.randomTextApiKey))
+        return false;
+    return json[config.randomTextApiKey];
+}
 
 async function ipcMsgModify(args, cmdName) {
-    // 获取随机文本辅助函数
-    const getRandomText = async () => {
-        const response = await fetch(config.randomTextApi);
-        const json = await response.json();
-        if (!response.ok || !json.hasOwnProperty(config.randomTextApiKey))
-            return false;
-        return json[config.randomTextApiKey];
-    }
+    if (!cmdName || cmdName !== 'nodeIKernelMsgService/sendMsg') throw new Error();
 
-    if (!cmdName || cmdName !== 'nodeIKernelMsgService/sendMsg') return args;
-
-    const payload = Array.isArray(args[3][1]) ? args[3][1] : args[3][1].payload;
+    const payload = (qqVer >= 32000) ? args[3][1].payload : args[3][1][1];
     // console.log('modmsg', payload);
     //修改原始消息
     for (const p of payload) {
