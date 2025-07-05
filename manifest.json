@@ -4,7 +4,7 @@
   "name": "修改图片概要",
   "slug": "change_summary",
   "description": "修改图片/表情包外显消息(未进入群聊时在外部看见的简略文本)（＾∀＾）",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "icon": "./src/assests/icon.svg",
   "thumb": "./src/assests/icon.svg",
   "authors": [
@@ -27,8 +27,8 @@
     "repo": "WJZ-P/LiteLoaderQQNT-Change-Summary",
     "branch": "main",
     "release": {
-      "tag": "v2.0.0",
-      "file": "Change-Summary-2.0.0.zip"
+      "tag": "v3.0.0",
+      "file": "Change-Summary-3.0.0.zip"
     }
   }
 }
