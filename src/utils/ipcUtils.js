@@ -47,7 +47,7 @@ async function ipcMsgModify(args,ipcName) {
 
     let payload = Array.isArray(args[3][1]) ? args[3][1] : args[3][1].payload;
 
-    if(!payload) payload=args[3][1].payload[0]//[1]是null.
+    if(!payload || !payload.msgElements) payload=args[3][1].payload[0]//[1]是null.
 
     //修改原始消息
     for (let item of payload.msgElements) {
